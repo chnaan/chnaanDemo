@@ -1,0 +1,53 @@
+package com.chnaan;
+
+import com.alibaba.fastjson.JSON;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
+/**
+ *
+ * @author chaonan.xu
+ * @version: 1.0
+ * @date 2020/11/11 20:23
+ */
+public class ChnaanMain {
+    public static void main(String[] args) {
+        File file = new File("C:\\Users\\pradmin\\Desktop\\file.txt");
+        char chars[] = new char[10000];
+        try {
+            if (file.createNewFile()){
+                System.out.println("创建成功");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        /***
+         *         try {
+         *             FileOutputStream in = new FileOutputStream(file);
+         *             try {
+         *                 in.write(str.getBytes(), 0, str.length());
+         *                 in.close();
+         *             } catch (IOException e) {
+         *                 e.printStackTrace();
+         *             }
+         *         } catch (FileNotFoundException e) {
+         *             e.printStackTrace();
+         *         }*/
+        try {
+            FileInputStream out = new FileInputStream(file);
+            InputStreamReader isr = new InputStreamReader(out);
+            int ch = 0;
+            int index = 0;
+            while ((ch = isr.read()) != -1) {
+                chars[index] = (char) ch;
+                index++;
+            }
+        } catch (Exception e) {
+        }
+        Arrays.asList(JSON.toJSONString(chars).replace("\\u0000","").split(",")).forEach(s->System.out.println(s));
+    }
+}
