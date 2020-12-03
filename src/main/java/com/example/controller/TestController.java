@@ -2,6 +2,8 @@ package com.example.controller;
 
 import com.example.dto.ReplaceMaterialDTO;
 import com.example.service.AnonymousClassTest;
+import com.example.service.LambadaService;
+import com.example.service.SystemService;
 import com.example.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -30,18 +32,24 @@ public class TestController {
     @Autowired
     AnonymousClassTest anonymousClassTest;
 
+    @Autowired
+    LambadaService lambadaService;
+
+    @Autowired
+    SystemService systemService;
+
     @RequestMapping("/hello")
     public String hello(@Validated ReplaceMaterialDTO dto) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         Field[] fields = dto.getClass().getDeclaredFields();
-        for (Field field : fields){
-            System.out.println(field);
-        }
+        String str = "this is test";
         List<String> stringList = new ArrayList<>();
         stringList.add("121000258");
         stringList.add("12300045");
         stringList.add("12412345");
         dto.setMaterialCode("12412345");
         //return testService.checkMatGroup(dto);
-        return anonymousClassTest.test2();
+        //return anonymousClassTest.test2();
+        //return lambadaService.useTest(str);
+        return systemService.systemTest();
     }
 }

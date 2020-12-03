@@ -24,6 +24,7 @@ public class ReplaceMaterialDTO {
     String productFactory;
     String replaceGroup;
     String userPercent;
+    String test;
 
 
 }
