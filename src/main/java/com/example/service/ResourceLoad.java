@@ -9,7 +9,6 @@ import org.springframework.core.type.classreading.SimpleMetadataReaderFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * TODO 描述
  *
  * @author chaonan.xu
  * @version: 1.0

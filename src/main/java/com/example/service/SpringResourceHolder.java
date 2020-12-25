@@ -20,14 +20,14 @@ import java.io.IOException;
 
 public class SpringResourceHolder implements BeanFactoryPostProcessor, ResourceLoaderAware {
 
-    protected MetadataReaderFactory metadataReaderFactory;
-    protected ResourcePatternResolver resourcePatternResolver;
+    private MetadataReaderFactory metadataReaderFactory;
+    private ResourcePatternResolver resourcePatternResolver;
     private ConfigurableListableBeanFactory beanFactory;
 
-    public ConfigurableListableBeanFactory getBeanFactory() {
+    ConfigurableListableBeanFactory getBeanFactory() {
         return beanFactory;
     }
-    public MetadataReaderFactory getMetadataReaderFactory() {
+    MetadataReaderFactory getMetadataReaderFactory() {
         return metadataReaderFactory;
     }
 

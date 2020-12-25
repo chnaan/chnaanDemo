@@ -18,10 +18,8 @@ public class LambadaService {
     private void consumerTest(String str, Consumer<String> consumer){
         consumer.accept(str);
     }
-    Consumer<String> consumerAnotherTest = s -> System.out.println(s);
 
     private String supplierTest(Supplier<String> supplier){
-        System.out.println();
         return supplier.get();
     }
     Supplier<String> supplierAnotherTest = ()->"AnotherTest";
@@ -34,7 +32,7 @@ public class LambadaService {
     private Integer functionTest(String str,Function<String,Integer> function){
         return function.apply(str);
     }
-    Function<String,Integer> functionAnotherTest = s -> Integer.parseInt(s);
+    Function<String,Integer> functionAnotherTest = Integer::parseInt;
 
 
     public String useTest(String str){
@@ -42,7 +40,6 @@ public class LambadaService {
         String haha = supplierTest(()-> "haha");
         Boolean bool = predicateTest(str,(s -> s.equals("test")));
         Integer num = functionTest("120",(Integer::parseInt));
-        System.out.println(haha+bool+num);
         return str;
     }
 }

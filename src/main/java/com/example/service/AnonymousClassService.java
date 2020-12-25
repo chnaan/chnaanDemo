@@ -1,6 +1,5 @@
 package com.example.service;
 
-import com.example.learn.AnonymousClassInterface;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @date 2020/11/30 11:18
  */
 @Service
-public class AnonymousClassTest {
+public class AnonymousClassService {
 
     String test() {
         return new AnonymousClassInterface(){
@@ -23,7 +22,7 @@ public class AnonymousClassTest {
     }
 
     public String test2(){
-        return new AnonymousClassTest(){
+        return new AnonymousClassService(){
             String good = "good";
 
             @Override
