@@ -23,7 +23,7 @@ public class ReplaceMaterialDTO {
     String materialDesc;
     String productFactory;
     String replaceGroup;
-    String userPercent;
+    Long userPercent;
     String test;
 
 

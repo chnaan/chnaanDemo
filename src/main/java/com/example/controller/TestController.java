@@ -53,13 +53,17 @@ public class TestController implements ApplicationContextAware {
     @Autowired
     ApplicationContextService applicationContextService;
 
+    @Autowired
+    ElasticSearchService elasticSearchService;
+
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.appctx=applicationContext;
     }
 
     @RequestMapping("/hello")
-    public String hello(@Validated ReplaceMaterialDTO dto) throws IOException {
+    public String hello(@Validated ReplaceMaterialDTO dto) throws IOException, IllegalAccessException, InterruptedException {
 
 
 //        StackTraceElement stack[] = Thread.currentThread().getStackTrace();
@@ -67,8 +71,14 @@ public class TestController implements ApplicationContextAware {
 //        for(int i=0;i<stack.length;i++){
 //            System.out.println(stack[i].getClassName()+":"+stack[i].getMethodName()+"-----");
 //        }
-
-        return beanTestProxyService.cglibProxyTest();
+        ReplaceMaterialDTO replaceMaterialDTO = new ReplaceMaterialDTO();
+        replaceMaterialDTO.setReplaceGroup("hahah");
+        replaceMaterialDTO.setUserPercent(123L);
+        //testService.getAttr(replaceMaterialDTO)
+        //seleniumService.test();
+        //multiThread.test();
+        elasticSearchService.addTest();
+        return "";
     }
 
 

@@ -1,6 +1,8 @@
 package com.example.service;
 
 import com.example.annotion.MatGroup;
+import jdk.nashorn.internal.ir.CallNode;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -9,13 +11,16 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 测试反射注解
@@ -99,9 +104,37 @@ public class TestService implements ApplicationContextAware {
         return stringBuilder.toString();
     }
 
-    public void valid(){
+    public String getAttr(Object object) throws IllegalAccessException {
+        Map<String,List<Integer>> replaceGroupMap = new HashMap<>();
+        Field[] fields = object.getClass().getDeclaredFields();
 
+        String replaceGroup = null;
+        Integer usePercent = null;
+        for (Field field : fields){
+            field.setAccessible(true);
+            if ("replaceGroup".equals(field.getName())){
+                replaceGroup = (String) field.get(object);
+            }
+
+            if ("userPercent".equals(field.getName())){
+               usePercent = NumberUtils.toInt(String.valueOf(field.get(object)).split(".")[0]);
+            }
+        }
+        if (CollectionUtils.isEmpty(replaceGroupMap.get(replaceGroup))){
+            List<Integer> usePercentList = new ArrayList<>();
+            usePercentList.add(usePercent);
+            replaceGroupMap.put(replaceGroup,usePercentList);
+        }
+        else {
+            replaceGroupMap.get(replaceGroup).add(usePercent);
+        }
+
+        return "";
     }
 
+    private void learn(){
+        Map<String,String> testMap = new HashMap<>();
+        testMap.get("");
+    }
 
 }

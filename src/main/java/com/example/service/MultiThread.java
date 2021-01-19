@@ -2,7 +2,7 @@ package com.example.service;
 
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * T多线程学习
@@ -13,42 +13,38 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 @Service
 public class MultiThread {
-    private void testThread(String s){
-
-        new Runnable(){
-            @Override
-            public void run() {
-                System.out.println(s);
-            }
-        };
-    }
 
     public String test(){
-        long startTime =  System.currentTimeMillis();
-        long thread1= (System.currentTimeMillis()-startTime);
-
         long startTime2 =  System.currentTimeMillis();
-        long thread2= (System.currentTimeMillis()-startTime2);
-        return "多线程："+thread1+"*********"+"单线程："+thread2;
+        thread2();
+        System.out.println("单线程："+"    :     "+(System.currentTimeMillis()-startTime2));
+
+        long startTime =  System.currentTimeMillis();
+        if (thread1()==2000000000L){
+            System.out.println("多线程："+"    :     "+(System.currentTimeMillis()-startTime)/1000);
+        }
+
+        return "";
     }
 
-    private String thread1(){
-        AtomicReference<Long> q= new AtomicReference<>(1L);
+    private Long thread1(){
+        AtomicLong m = new AtomicLong();
+        AtomicLong n = new AtomicLong();
         new Thread(() -> {
             for (int i=0;i<1000000000;i++){
-                q.set(q.get() + 1L);
+                m.set(m.get() + 1L);
             }
         }).start();
 
         new Thread(() -> {
             for (int i=0;i<1000000000;i++){
-                q.set(q.get() + 1L);
+                n.set(n.get() + 1L);
             }
         }).start();
-        return String.valueOf(q);
+        return m.get()+n.get();
     }
 
-    private String thread2(){
+    private Long thread2(){
         long p=1L;
 
         for (int i=0;i<1000000000;i++){
@@ -57,7 +53,7 @@ public class MultiThread {
         for (int i=0;i<1000000000;i++){
             p=p+1L;
         }
-        return String.valueOf(p);
+        return p;
     }
 
 }

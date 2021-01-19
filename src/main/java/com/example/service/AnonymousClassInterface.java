@@ -1,8 +1,7 @@
 package com.example.service;
 
 /**
- * TODO 描述
- *
+ *测试匿名类
  * @author chaonan.xu
  * @version: 1.0
  * @date 2020/11/30 11:37

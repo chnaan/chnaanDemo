@@ -3,14 +3,12 @@ package com.example.service;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 
 /**
- * TODO 描述
- *
+ * 测试cglib动态代理
  * @author chaonan.xu
  * @version: 1.0
  * @date 2020/12/25 10:32
@@ -32,7 +30,7 @@ public class BeanTestProxyService {
                 return obj;
             }});
         BeanTest beanTest = (BeanTest) enhancer.create();
-        System.out.println(beanTest.getClass());
+
         return beanTest.testBean();
     }
 }

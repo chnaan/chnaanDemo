@@ -1,8 +1,7 @@
 package com.example.service;
 
 /**
- * TODO 描述
- *
+ *测试bean管理
  * @author chaonan.xu
  * @version: 1.0
  * @date 2020/12/24 14:53

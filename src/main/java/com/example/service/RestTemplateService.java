@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * TODO 描述
- *
+ *测试restTemplate
  * @author chaonan.xu
  * @version: 1.0
  * @date 2020/12/24 10:15
