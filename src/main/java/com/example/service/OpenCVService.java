@@ -21,7 +21,7 @@ import java.io.IOException;
  * @version: 1.0
  * @date 2021/01/07 15:02
  */
-public class UseLessService {
+public class OpenCVService {
     private static final String CAPTCHA_PATH = "D:\\chnaanTest\\opencv\\CAPTCHA\\";
     private static final String SINGLE_CHAR__PATH = "D:\\chnaanTest\\opencv\\single_char\\";
     public static void main(String[] args) throws IOException {

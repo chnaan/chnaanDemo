@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class CommonUtils {
 
+    /**找出文件中目标字符串的个数**/
     public static long statisticsString(File file,String targetStr) {
         BufferedReader reader = null;
         List<String> strings = new ArrayList<>();
@@ -36,7 +37,7 @@ public class CommonUtils {
             }
         }
         String tempStr = String.join("", strings);
-        int count = 0 ;
+        long count = 0 ;
         int targetStrLen = targetStr.length();
         for (int i =0 ;i<tempStr.length()-targetStrLen;i++){
             if (!tempStr.substring(i,i+targetStrLen).equals(targetStr)){
@@ -49,6 +50,7 @@ public class CommonUtils {
 
     }
 
+    /**复制文件**/
     public static void copyImg(String srcFilePath,String dstFileName,String dstFilePath) throws IOException {
         String imgStr = img2code(srcFilePath);
         byte[] bytes = Base64.decodeBase64(imgStr);
@@ -69,6 +71,7 @@ public class CommonUtils {
         out.close();
     }
 
+    /**图片转base64**/
     private static String img2code(String filePath) {
         InputStream inputStream;
         byte[] data = null;

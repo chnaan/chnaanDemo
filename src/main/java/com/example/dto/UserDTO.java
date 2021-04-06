@@ -19,5 +19,7 @@ public class UserDTO {
 
     long age;
 
+    Long userPercent;
+
     Timestamp createTime;
 }

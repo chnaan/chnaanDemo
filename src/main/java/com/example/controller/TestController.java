@@ -1,16 +1,24 @@
 package com.example.controller;
 
+import com.example.Constant.MessageConstant;
 import com.example.dto.ReplaceMaterialDTO;
+import com.example.dto.UserDTO;
 import com.example.service.*;
+import com.example.util.MessageUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -57,13 +65,15 @@ public class TestController implements ApplicationContextAware {
     ElasticSearchService elasticSearchService;
 
 
+
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.appctx=applicationContext;
     }
 
     @RequestMapping("/hello")
-    public String hello(@Validated ReplaceMaterialDTO dto) throws IOException, IllegalAccessException, InterruptedException {
+    public String hello(@Validated ReplaceMaterialDTO dto) throws IOException, IllegalAccessException, InterruptedException, InstantiationException {
 
 
 //        StackTraceElement stack[] = Thread.currentThread().getStackTrace();
@@ -77,8 +87,20 @@ public class TestController implements ApplicationContextAware {
         //testService.getAttr(replaceMaterialDTO)
         //seleniumService.test();
         //multiThread.test();
-        elasticSearchService.addTest();
+        //elasticSearchService.addTest();
+        List<ReplaceMaterialDTO> list = new ArrayList<>();
+        list.add(replaceMaterialDTO);
+        Map<String,String> property = new HashMap<>();
+        property.put("replaceGroup","name");
+        List<UserDTO> userDTO = testService.copyProperties(list,property, UserDTO.class);
+        userDTO.get(0).getName();
         return "";
+    }
+
+    @GetMapping("/i18n")
+    public String i18n(){
+        System.out.println(MessageUtils.get(MessageConstant.DATA_IS_WRONG));
+        return MessageUtils.get(MessageConstant.DATA_IS_WRONG);
     }
 
 
