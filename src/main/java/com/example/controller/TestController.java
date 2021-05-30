@@ -82,8 +82,6 @@ public class TestController implements ApplicationContextAware {
 //            System.out.println(stack[i].getClassName()+":"+stack[i].getMethodName()+"-----");
 //        }
         ReplaceMaterialDTO replaceMaterialDTO = new ReplaceMaterialDTO();
-        replaceMaterialDTO.setReplaceGroup("hahah");
-        replaceMaterialDTO.setUserPercent(123L);
         //testService.getAttr(replaceMaterialDTO)
         //seleniumService.test();
         //multiThread.test();
@@ -93,7 +91,6 @@ public class TestController implements ApplicationContextAware {
         Map<String,String> property = new HashMap<>();
         property.put("replaceGroup","name");
         List<UserDTO> userDTO = testService.copyProperties(list,property, UserDTO.class);
-        userDTO.get(0).getName();
         return "";
     }
 
