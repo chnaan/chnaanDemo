@@ -4,6 +4,7 @@ import com.example.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 /**
  *
@@ -12,6 +13,7 @@ import org.apache.ibatis.annotations.Select;
  * @date 2020/12/18 12:19
  */
 @Mapper
+@Repository
 public interface UserMapper {
 
     @Select("select * from user where id=#{id} ")

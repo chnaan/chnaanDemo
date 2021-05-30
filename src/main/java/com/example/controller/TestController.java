@@ -32,6 +32,9 @@ public class TestController implements ApplicationContextAware {
     ApplicationContext appctx;
 
     @Autowired
+    UserService userService;
+
+    @Autowired
     TestService testService;
 
     @Autowired
@@ -90,14 +93,19 @@ public class TestController implements ApplicationContextAware {
         list.add(replaceMaterialDTO);
         Map<String,String> property = new HashMap<>();
         property.put("replaceGroup","name");
-        List<UserDTO> userDTO = testService.copyProperties(list,property, UserDTO.class);
+        List<UserDTO> userDTO = testService.copyProperties(list, property, UserDTO.class);
         return "";
     }
 
     @GetMapping("/i18n")
-    public String i18n(){
+    public String i18n() {
         System.out.println(MessageUtils.get(MessageConstant.DATA_IS_WRONG));
         return MessageUtils.get(MessageConstant.DATA_IS_WRONG);
+    }
+
+    @RequestMapping("/haha")
+    public void setUser() {
+        userService.test();
     }
 
 
