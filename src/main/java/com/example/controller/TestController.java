@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.Constant.MessageConstant;
+import com.example.constant.MessageConstant;
 import com.example.dto.ReplaceMaterialDTO;
 import com.example.dto.UserDTO;
 import com.example.service.*;

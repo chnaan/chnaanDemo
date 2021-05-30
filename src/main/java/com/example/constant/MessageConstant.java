@@ -1,4 +1,4 @@
-package com.example.Constant;
+package com.example.constant;
 
 /**
  * @author chaonan.xu
